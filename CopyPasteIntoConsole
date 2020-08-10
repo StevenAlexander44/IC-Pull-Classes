@@ -17,5 +17,5 @@
     })))
   for (const period of classes) {
     open(
-      `/campus/resources/portal/section/${period.sectionID}?_expand=course-school&_expand=terms&_expand=periods-periodSchedule&_expand=teacherPreference&_expand=room&_expand=teachers`
+      `/campus/resources/portal/section/${period.sectionID}?_expand=terms&_expand=periods-periodSchedule`
   )}
