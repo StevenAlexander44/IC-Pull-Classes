@@ -28,10 +28,10 @@ async function main () {
       })
         .then(r => r.json())
     delete period.sectionID
-    period.sort = periodID
+    period.period = periodID
   }
   return classes
-    .sort((a, b) => +a.sort - +b.sort)
+    .sort((a, b) => +a.period - +b.period)
     .map(({ period, course, teacher }) => `${period}: ${teacher} / ${course}`)
     .join('\n')
 }
