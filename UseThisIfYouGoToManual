@@ -1,47 +1,26 @@
 async function main () {
-    const classes = await fetch(
-      '/campus/resources/portal/roster?_enableScheduleForGrades=true', {
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Cache-Control': 'no-cache'
-      }
-    })
-      .then(r => r.json())
-      .then(arr => arr.map(({
-        sectionID,
-        courseName,
-        teacherDisplay
-      }) => ({
-        sectionID,
-        course: courseName,
-        teacher: teacherDisplay
-      })))
-    for (const period of classes) {
-      const {
-        periods: [{ name }],
-        periods: [{ periodSchedule }],
-	periods: [{ periodID }]
-      } = await fetch(
-        `/campus/resources/portal/section/${period.sectionID}?_expand=course-school&_expand=terms&_expand=periods-periodSchedule&_expand=teacherPreference&_expand=room&_expand=teachers`,       {
-          headers: {
-            'Accept': 'application/json, text/plain, */*',
-            'Cache-Control': 'no-cache'
-          }
-        })
-          .then(r => r.json())
-      delete period.sessionID
-      period.period = name
-      period.block = periodSchedule.name
-      period.sort = periodID
-    }
-    return classes
-      .sort((a, b) => +a.sort - +b.sort)
-      .map(({ block, period, course, teacher }) => `${period} ${block}: ${teacher} / ${course}`)
-      .join('\n')
-  }
-  
-  main()
-    .then(output => {
-      console.log(output)
-      alert(output)
-    })
+	const classes = await fetch(
+		'https://jcpsky.infinitecampus.org/campus/resources/portal/roster?_enableScheduleForGrades=true', 
+		{headers: {'Accept': 'application/json, text/plain, */*', 'Cache-Control': 'no-cache'}}
+	)
+	.then(r => r.json())
+	for (const period of classes) {
+		const {periods: [{ periodID }]} = await fetch(
+			`https://jcpsky.infinitecampus.org/campus/resources/portal/section/${period.sectionID}?_expand=course-school&_expand=terms&_expand=periods-periodSchedule&_expand=teacherPreference&_expand=room&_expand=teachers`,
+			{headers: {'Accept': 'application/json, text/plain, */*','Cache-Control': 'no-cache'}}
+		)
+		.then(r => r.json())
+		delete period.sectionID
+		period.period = periodID
+	}
+	return classes
+	.sort((a, b) => +a.period - +b.period)
+	.map(({ period, courseName, teacherDisplay }) => `${period}: ${teacherDisplay} / ${courseName}`)
+	.join('\n')
+}
+
+main()
+	.then(output => {
+		console.log(output)
+		alert(output)
+	})
