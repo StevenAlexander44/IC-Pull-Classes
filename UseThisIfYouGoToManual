@@ -25,7 +25,7 @@ async function main () {
 	}
 	return classes
 		.sort((a, b) => +a.sort - +b.sort)
-		.map(({ block, period, course, teacher }) => `${period} ${block}: ${teacher} / ${course}`)
+		.map(({ block, period, course, teacher }) => `${block} ${period}: ${teacher} / ${course}`)
 		.join('\n')
 }
 
