@@ -2,15 +2,6 @@ async function main () {
 	const domain = 'https://jcpsky.infinitecampus.org/campus/resources/portal/'
 	const classes = await fetch(domain + 'roster?_enableScheduleForGrades=true', {headers: {'Accept': 'application/json, text/plain, */*','Cache-Control': 'no-cache'}})
 		.then(r => r.json())
-		.then(arr => arr.map(({
-			sectionID,
-			courseName,
-			teacherDisplay
-		}) => ({
-			sectionID,
-			course: courseName,
-			teacher: teacherDisplay
-		})))
 	for (const period of classes) {
 		const {
 			periods: [{ name }],
@@ -25,7 +16,7 @@ async function main () {
 	}
 	return classes
 		.sort((a, b) => +a.sort - +b.sort)
-		.map(({ block, period, course, teacher }) => `${block} ${period}: ${teacher} / ${course}`)
+		.map(({ block, period, teacherDisplay, courseName }) => `${block} ${period}: ${teacherDisplay} / ${courseName}`)
 		.join('\n')
 }
 
