@@ -5,17 +5,19 @@ async function main () {
 	)
 	.then(r => r.json())
 	for (const period of classes) {
-		const {periods: [{ periodID }]} = await fetch(
+		const {periods: [{ periodID }], terms: [{ termName }]} = await fetch(
 			`https://jcpsky.infinitecampus.org/campus/resources/portal/section/${period.sectionID}?_expand=course-school&_expand=terms&_expand=periods-periodSchedule&_expand=teacherPreference&_expand=room&_expand=teachers`,
 			{headers: {'Accept': 'application/json, text/plain, */*','Cache-Control': 'no-cache'}}
 		)
 		.then(r => r.json())
 		delete period.sectionID
 		period.period = periodID
+        period.term = termName
 	}
 	return classes
 	.sort((a, b) => +a.period - +b.period)
-	.map(({ period, courseName, teacherDisplay }) => `${period}: ${teacherDisplay} / ${courseName}`)
+	.sort((a, b) => +a.term - +b.term)
+	.map(({ term, period, courseName, teacherDisplay }) => `Term ${term} | PeriodID ${period}: ${teacherDisplay} / ${courseName}`)
 	.join('\n')
 }
 
