@@ -9,18 +9,17 @@ async function main () {
 			{headers: {'Accept': 'application/json, text/plain, */*','Cache-Control': 'no-cache'}})
 		.then(r => r.json())
 		delete period.sectionID
-		period.period = name
-		period.block = periodSchedule.name
-		period.sort = periodID
+		period.id = periodID
 		period.term = termName
+		period.day = periodSchedule.name
+		period.number = name
 	}
 	return classes
-	.sort((a, b) => +a.sort - +b.sort)
+	.sort((a, b) => +a.id - +b.id)
 	.sort((a, b) => +a.term - +b.term)
-	.map(({ term, block, period, teacherDisplay, courseName }) => `Term ${term} | ${block} ${period}: ${teacherDisplay} / ${courseName}`)
+	.map(({ term, day, number, teacherDisplay, courseName }) => `Term ${term} | ${day} ${number}: ${teacherDisplay} / ${courseName}`)
 	.join('\n')
 }
-
 main()
 	.then(output => {
 		console.log(output)
