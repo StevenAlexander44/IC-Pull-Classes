@@ -1,5 +1,3 @@
-// document.head.appendChild(document.createElement('script')).src = 'https://raw.githubusercontent.com/StevenAlexander44/IC-Pull-Classes/master/CopyPasteIntoConsole.js'
-
 async function main () {
 	const classes = await fetch(
 		'https://jcpsky.infinitecampus.org/campus/resources/portal/roster?_enableScheduleForGrades=true', 
