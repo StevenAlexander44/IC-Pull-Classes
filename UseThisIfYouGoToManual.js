@@ -17,7 +17,7 @@ async function main () {
 	return classes
 	.sort((a, b) => +a.sort - +b.sort)
 	.sort((a, b) => +a.term - +b.term)
-	.map(({ block, period, teacherDisplay, courseName }) => `${block} ${period}: ${teacherDisplay} / ${courseName}`)
+	.map(({ term, block, period, teacherDisplay, courseName }) => `Term ${term} | ${block} ${period}: ${teacherDisplay} / ${courseName}`)
 	.join('\n')
 }
 
