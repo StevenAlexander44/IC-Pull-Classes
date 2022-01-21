@@ -74,7 +74,6 @@
 1977 (Salk recieves Medal of Freedom),18,16
 1978,15,13
 1979,34,4`.split('\n');
-        
 		function parseThing(v, i) {
 			data.forEach(x => v.push(x.split(',')[i]))
 		}
@@ -82,7 +81,7 @@
 		parseThing(years, 0);
 		var events =[];
 		for (i=0; i<years.length; i++) {
-		    if(years[i].length>4) {events.push(i)}
+			if(years[i].length>4) {events.push(i)}
 		}
 		var cases = [];
 		parseThing(cases, 1);
