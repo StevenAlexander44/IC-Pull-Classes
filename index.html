@@ -6,7 +6,7 @@
 	<body>
 		<canvas id="polioChart"></canvas>
 		<script>
-        var data = `1910,5861,950
+		var data = `1910,5861,950
 		1911,1931,440
 		1912,1932,430
 		1913,1934,421
@@ -75,74 +75,74 @@
 		1978,15,13
 		1979,34,4`.split('\n');
         
-        function parseThing(v, i) {
-        	data.forEach(x => v.push(x.split(',')[i]))
-        }
-        var years = [];
-        parseThing(years, 0);
-        var cases = [];
-        parseThing(cases, 1);
-        var deaths = [];
-        parseThing(deaths, 2);
-        
-        new Chart("polioChart", {
-        	type: "line",
-        	data: {
-        		labels: years,
-        		datasets: [{
-        			label: 'Cases',
-        			data: cases,
-        			fill: false,
-        			borderColor: "blue"
-        		}, {
-        			label: 'Deaths',
-        			data: deaths,
-        			fill: false,
-        			borderColor: "red"
-        		}]
-        	},
-        	options: {
-        		responsive: true,
-        		plugins: {
-        			title: {
-        				display: true,
-        				text: 'Polio Statistics'
-        			},
-        		},
-        		interaction: {
-        			mode: 'index',
-        			intersect: false
-        		},
-        		scales: {
-        			x: {
-        				display: true,
-        				title: {
-        					display: true,
-        					text: 'Year'
-        				}
-        			},
-        			y: {
-        				display: true,
-        				title: {
-        					display: true,
-        					text: 'People'
-        				}
-        			}
-        		},
-        		elements: {
-        			point: {
-        				radius: customRadius,
-        				display: true
-        			}
-        		}
-        
-        	}
-        });
-        
-        function customRadius(context) {
-        	let index = context.dataIndex;
-        	return index === 6 ? 15 : 2;
-        }
+		function parseThing(v, i) {
+			data.forEach(x => v.push(x.split(',')[i]))
+		}
+		var years = [];
+		parseThing(years, 0);
+		var cases = [];
+		parseThing(cases, 1);
+		var deaths = [];
+		parseThing(deaths, 2);
+
+		new Chart("polioChart", {
+			type: "line",
+			data: {
+				labels: years,
+				datasets: [{
+					label: 'Cases',
+					data: cases,
+					fill: false,
+					borderColor: "blue"
+				}, {
+					label: 'Deaths',
+					data: deaths,
+					fill: false,
+					borderColor: "red"
+				}]
+			},
+			options: {
+				responsive: true,
+				plugins: {
+					title: {
+						display: true,
+						text: 'Polio Statistics'
+					},
+				},
+				interaction: {
+					mode: 'index',
+					intersect: false
+				},
+				scales: {
+					x: {
+						display: true,
+						title: {
+							display: true,
+							text: 'Year'
+						}
+					},
+					y: {
+						display: true,
+						title: {
+							display: true,
+							text: 'People'
+						}
+					}
+				},
+				elements: {
+					point: {
+						radius: customRadius,
+						display: true
+					}
+				}
+
+			}
+		});
+
+		function customRadius(context) {
+			let index = context.dataIndex;
+			return index === 6 ? 15 : 2;
+		}
 		</script>
 	</body>
 </html>
