@@ -1,4 +1,3 @@
-# IC-Pull-Classes
-Get Infinite Campus Schedule Early
+# Polio Graph
 
-Go to my [github.io page](https://stevenalexander44.github.io/IC-Pull-Classes/schedules.html) for easier use
+Go to my [graph](https://stevenalexander44.github.io/Polio-Graph/polio.html) for the graph
