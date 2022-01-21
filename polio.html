@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<body>
+<canvas id="myChart"></canvas>
+
+<script>
+var data = `1910,5861,950
+1911,1931,440
+1912,1932,430
+1913,1934,421
+1914,1220,329
+1915,1634,691
+1916,27363,7130
+1917,4082,1182
+1918,2493,960
+1919,1932,747
+1920,2325,769
+1921,6266,1597
+1922,2222,790
+1923,3266,850
+1924,5199,1079
+1925,5926,1492
+1926,2528,851
+1927,10533,2013
+1928,5113,1381
+1929,2837,812
+1930,9188,1370
+1931,15790,2096
+1932,3778,828
+1933,4983,797
+1934,7519,852
+1935,10839,1040
+1936,4523,780
+1937,9511,1433
+1938,1712,478
+1939,7343,756
+1940,9826,1004
+1943,12449,1115
+1944,19029,1433
+1945,13619,1189
+1946,25191,1845
+1947,10734,580
+1948,27680,2140
+1949,42033,2720
+1950,33300,1904
+1951,28386,1551
+1952,57879,3145
+1953,35592,1450
+1954,38476,1368
+1955,28985,1043
+1956,15140,566
+1957,5485,221
+1958,5787,255
+1959,8425,454
+1960,3190,230
+1961,1312,90
+1962,910,60
+1963,449,41
+1964,122,17
+1965,72,16
+1966,133,9
+1967,41,16
+1968,53,24
+1969,20,13
+1970,33,7
+1971,21,18
+1972,31,2
+1973,8,10
+1974,7,3
+1975,8,9
+1976,14,16
+1977,18,16
+1978,15,13
+1979,34,4`.split('\n');
+function parseThing(v,i) {data.forEach(x=>v.push(x.split(',')[i]))}
+var years = [];
+parseThing(years,0);
+var cases = [];
+parseThing(cases,1);
+var deaths = [];
+parseThing(deaths,2);
+
+new Chart("myChart", {
+  type: "line",
+  data: {
+    labels: years,
+    datasets: [{
+      label: 'Cases',
+      data: cases,
+      fill: false,
+      borderColor: "blue"
+    },{
+      label: 'Deaths',
+      data: deaths,
+      fill: false,
+      borderColor: "red"
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: 'Polio Statistics'
+      },
+    },
+    interaction: {
+      mode: 'index',
+      intersect: false
+    },
+    scales: {
+      x: {
+        display: true,
+        title: {
+          display: true, text: 'Year'
+        }
+      },
+      y: {
+        display: true,
+        title: {
+          display: true, text: 'People'
+        }
+      }
+    }
+  },
+});
+
+</script>
+
+</body>
+</html>
