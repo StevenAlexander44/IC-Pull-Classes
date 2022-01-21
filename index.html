@@ -35,20 +35,20 @@
 1936,4523,780
 1937,9511,1433
 1938 March of Dimes,1712,478
-1939,7343,756
-1940,9826,1004
+1939 Salk Graduates,7343,756
+1940 Salk Gets an Internship,9826,1004
 1943,12449,1115
 1944,19029,1433
 1945,13619,1189
 1946,25191,1845
-1947,10734,580
+1947 Salk Heads a Lab,10734,580
 1948,27680,2140
 1949 Virus Culturing Breakthrough,42033,2720
 1950,33300,1904
 1951,28386,1551
 1952 Salk Begins Vaccine Tests,57879,3145
 1953 Salk Becomes Famous,35592,1450
-1954,38476,1368
+1954 Salk Begins Testing Vaccine,38476,1368
 1955,28985,1043
 1956,15140,566
 1957,5485,221
@@ -71,7 +71,7 @@
 1974,7,3
 1975,8,9
 1976,14,16
-1977,18,16
+1977 Salk recieves Medal of Freedom,18,16
 1978,15,13
 1979,34,4`.split('\n');
         
@@ -80,11 +80,10 @@
 		}
 		var years = [];
 		parseThing(years, 0);
-		var special =[];
+		var events =[];
 		for (i=0; i<years.length; i++) {
-		    if(years[i].length>4) {special.push(i)}
+		    if(years[i].length>4) {events.push(i)}
 		}
-		console.log(special)
 		var cases = [];
 		parseThing(cases, 1);
 		var deaths = [];
@@ -119,13 +118,6 @@
 					intersect: false
 				},
 				scales: {
-					x: {
-						display: true,
-						title: {
-							display: true,
-							text: 'Year'
-						}
-					},
 					y: {
 						display: true,
 						title: {
@@ -143,7 +135,7 @@
 			}
 		});
 		function customRadius(context) {
-			return special.indexOf(context.dataIndex) > -1 ? 15 : 2;
+			return events.indexOf(context.dataIndex) > -1 ? 15 : 2;
 		}
 		</script>
 	</body>
