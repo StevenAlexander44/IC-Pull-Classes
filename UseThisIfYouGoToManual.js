@@ -17,7 +17,7 @@ arrput = output.map(({ term, day, number, teacherDisplay, courseName }) => ['Ter
 output = output.map(({ term, day, number, teacherDisplay, courseName }) => `Term ${term} | ${day} ${number}: ${teacherDisplay} / ${courseName}`).join('\n')
 console.log(output)
 alert(output)
-var table = '<table border="2px">';
+var table = '<table>';
 for (const clas of arrput) {
 	table += '<tr>'
 	for (const thing of clas) {
@@ -27,3 +27,4 @@ for (const clas of arrput) {
 }
 table += '</table>';
 document.body.innerHTML = table;
+$('link[rel="stylesheet"]').remove()
