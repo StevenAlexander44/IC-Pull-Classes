@@ -12,11 +12,18 @@ for (const period of classes) {
 	period.day = periodSchedule.name
 	period.number = name
 }
-output = classes
-	.sort((a, b) => +a.id - +b.id)
-	.sort((a, b) => +a.term - +b.term)
-	.map(({ term, day, number, teacherDisplay, courseName }) => `Term ${term} | ${day} ${number}: ${teacherDisplay} / ${courseName}`)
-	.join('\n')
+output = classes.sort((a, b) => +a.id - +b.id).sort((a, b) => +a.term - +b.term)
+arrput = output.map(({ term, day, number, teacherDisplay, courseName }) => ['Term: ' + term, day + number, teacherDisplay, courseName])
+output = output.map(({ term, day, number, teacherDisplay, courseName }) => `Term ${term} | ${day} ${number}: ${teacherDisplay} / ${courseName}`).join('\n')
 console.log(output)
 alert(output)
-document.body.innerText = output
+var table = '<table border="2px">';
+for (const clas of arrput) {
+	table += '<tr>'
+	for (const thing of clas) {
+		table += `<td>${thing}</td>`
+	}
+	table += '</tr>';
+}
+table += '</table>';
+document.body.innerHTML = table;
