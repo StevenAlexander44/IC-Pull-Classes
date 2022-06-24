@@ -1,3 +1,4 @@
+javascript:(()=>{
 const classes = await fetch(
 	'/campus/resources/portal/roster?_enableScheduleForGrades=true',
 	{headers: {'Accept': 'application/json, text/plain, */*', 'Cache-Control': 'no-cache'}}
@@ -29,3 +30,4 @@ table += '</table>'
 document.body.innerHTML = table
 document.head.innerHTML = ''
 document.title = 'Schedule'
+})();
