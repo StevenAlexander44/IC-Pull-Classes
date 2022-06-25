@@ -9,12 +9,12 @@ javascript:(()=>{ !async function() {
 				}).then(e=>e.json());
 			period.id = periodID,period.term=termName,period.day=periodSchedule.name,period.number=name
 		}
-		output = classes.sort((a, b) => +a.id - +b.id).sort((a, b) => +a.term - +b.term);
-		arrput = output.map(({ term, day, number, teacherDisplay, courseName }) => ["Term: " + term, day + number, teacherDisplay, courseName]);
-		output = output.map(({ term, day, number, teacherDisplay, courseName }) => `Term ${term} | ${day} ${number}: ${teacherDisplay} / ${courseName}`).join("\n");
-		console.log(output), alert(output);
+		output = classes.sort((a, b) => +a.id - +b.id).sort((a, b) => +a.term - +b.term)
+		.map(({ term, day, number, teacherDisplay, courseName }) => [`Term: ${term}`, day + number, teacherDisplay, courseName]);
+		log = output.join("\n");
+		console.log(log), alert(log);
 		var table="<table>";
-		for (const clas of arrput) {
+		for (const clas of output) {
 			table+="<tr>";
 			for (const o of clas) {
 				table += `<td>${o}</td>`
