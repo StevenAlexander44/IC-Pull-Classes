@@ -1,5 +1,4 @@
-javascript:(()=>{
-	!async function() {
+javascript:(()=>{ !async function() {
 		const classes = await fetch("/campus/resources/portal/roster?_enableScheduleForGrades=true",{
 			headers:{Accept:"application/json, text/plain, */*","Cache-Control":"no-cache"}
 		}).then(e=>e.json());
@@ -10,9 +9,9 @@ javascript:(()=>{
 				}).then(e=>e.json());
 			period.id = periodID,period.term=termName,period.day=periodSchedule.name,period.number=name
 		}
-		output = classes.sort((a, b) => +a.id - +b.id).sort((a, b) => +a.term - +b.term)
-		arrput = output.map(({ term, day, number, teacherDisplay, courseName }) => ["Term: " + term, day + number, teacherDisplay, courseName])
-		output = output.map(({ term, day, number, teacherDisplay, courseName }) => `Term ${term} | ${day} ${number}: ${teacherDisplay} / ${courseName}`).join("\n")
+		output = classes.sort((a, b) => +a.id - +b.id).sort((a, b) => +a.term - +b.term);
+		arrput = output.map(({ term, day, number, teacherDisplay, courseName }) => ["Term: " + term, day + number, teacherDisplay, courseName]);
+		output = output.map(({ term, day, number, teacherDisplay, courseName }) => `Term ${term} | ${day} ${number}: ${teacherDisplay} / ${courseName}`).join("\n");
 		console.log(output), alert(output);
 		var table="<table>";
 		for (const clas of arrput) {
@@ -22,7 +21,6 @@ javascript:(()=>{
 			}
 			table += "</tr>"
 		}
-		table += "</table>"
+		table += "</table>";
 		document.body.innerHTML=table,document.head.innerHTML="",document.title="Schedule"
-	}()
-})();
+}() })();
