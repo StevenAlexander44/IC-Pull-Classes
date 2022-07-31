@@ -4,7 +4,7 @@
 		<p>Drag bookmarklets like this <a href="javascript:alert('it works')">test</a> into your bookmarks bar. Toggle the bookmark bar with ctrl + shift + b</p>
 		<script>
 			let base=window.location.href;
-			let pages=["duPontManual","GeneralJCPS"];
+			let pages=["duPontManual","GeneralJCPS","embed.js"];
 			for (let page of pages) {
 				document.body.innerHTML+=`<p><a href="javascript:(()=>{if (window.location.hostname != 'jcpsky.infinitecampus.org'){alert('login to infinite campus and click this again')};document.body.appendChild(document.createElement('script')).src='${base}${page}'})();">${page}</a></p>`
 			}
