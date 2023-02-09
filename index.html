@@ -4,7 +4,7 @@
 		<p>Drag bookmarklets like this <a href="javascript:alert('it works')">test</a> into your bookmarks bar. Toggle the bookmark bar with ctrl + shift + b</p>
 		<script>
 			let base=window.location.href;
-			let pages=["duPontManual","GeneralJCPS","google.com"];
+			let pages=["duPontManual","GeneralJCPS","google.com","Mass"];
 			for (let page of pages) {
 				document.body.innerHTML+=`<p><a href="javascript:(()=>{document.body.appendChild(document.createElement('script')).src='${base}${page}'})();">${page}</a></p>`
 			}
