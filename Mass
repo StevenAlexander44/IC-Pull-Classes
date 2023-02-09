@@ -1,1 +1,6 @@
-javascript:alert(MassOfUnknown1);
+LoadIt();
+document.getElementById('A1').value=MassOfUnknown1;
+document.getElementById('A2').value="Type Your Name Here";
+document.getElementById('PersonsName').spellcheck=false;
+document.getElementById('PersonsName').contenteditable=true;
+SubmitForm();
