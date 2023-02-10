@@ -1,6 +1,7 @@
 LoadIt();
+for (var count=0; count<17; count++) { NextStep(1) }
 document.getElementById('A1').value=MassOfUnknown1;
-document.getElementById('A2').value="Type Your Name Here";
+document.getElementById('A2').value="TYPE YOUR NAME HERE";
 document.getElementById('PersonsName').spellcheck=false;
 document.getElementById('PersonsName').contentEditable=true;
 SubmitForm();
