@@ -8,3 +8,5 @@ document.getElementById('PersonsName').contentEditable=true;
 document.getElementById('PersonsName').spellcheck=false;
 document.getElementById('FinalMessage').contentEditable=true;
 document.getElementById('FinalMessage').spellcheck=false;
+var datething=document.getElementById('FinalMessage');
+datething.innerHTML=datething.innerHTML.replace(/\d+\.\d+/,(5+Math.random()*25).toFixed(2));
