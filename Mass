@@ -1,3 +1,4 @@
+initialize();
 LoadIt();
 for (var count=0; count<17; count++) { NextStep(1) }
 document.getElementById('A1').value=MassOfUnknown1;
